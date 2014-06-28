@@ -6,6 +6,8 @@ class Atom(object):
     def __init__(self, **kwargs):
         # Number of protons (róteindir)
         self.no_protons = kwargs.get('no_protons')
+        if self.no_protons <= 0:
+            raise ValueError()
 
         # Number of neutrons (nifteindir)
         default_ne = int(round(self.element.mass_number
