@@ -14,7 +14,10 @@ class Element(object):
 
     @classmethod
     def get(cls, atomic_number):
-        elem = TableOfElements[atomic_number]
+        try:
+            elem = TableOfElements[abs(atomic_number)]
+        except KeyError:
+            raise ValueError("Invalid atomic number.")
         return cls(atomic_number, elem[0], elem[1], elem[2])
 
     def __repr__(self):
